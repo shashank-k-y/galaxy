@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Route, Link, BrowserRouter as Router} from "react-router-dom";
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import favplanet from './favplanet';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+
+
+const routing = (
+  <Router>
+    <div >
+        <ul >
+            <li><Link style={{color: 'white'}} to="/">Home</Link> &nbsp;</li>
+            <li><Link style={{color: 'white'}} to="/fav">Favourites</Link></li>
+
+        </ul>
+    </div>
+    <Route exact path = "/" component={App}/>
+    <Route path = "/fav" component={favplanet}/>
+  </Router>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(
+  routing,
+  document.getElementById('root')
+);
